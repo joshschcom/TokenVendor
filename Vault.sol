@@ -1,14 +1,14 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import "./Vaulttoken.sol";
+import "./Vaulttoken.sol";          //A ERC20 Token contract which has an IERC20 interface in it, aswwell as openzeppelins ownable.sol & context.sol
 
 contract ownVault is Ownable {      
-    IERC20 public DepositToken;     //We define our two tokens interacting with the contract
+    IERC20 public DepositToken;     //We define our two tokens with the erc20 interface, interacting with the contract
     IERC20 public VaultToken;       
 
     mapping (address => uint) public depositDTAmount; //Every person who deposits an amount can be called with their address showing the amount deposited(uint)
-    mapping (address => uint) public depositVTAmount;
+    mapping (address => uint) public depositVTAmount; //DT = DepositToken, VT = Vaulttoken
 
     constructor(address _DepositToken, address _VaultToken) {   //Deploying the contract with both of the token addresses
         DepositToken = IERC20(_DepositToken);
